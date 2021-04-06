@@ -31,13 +31,14 @@ class Block {
 
     mine(difficulty: number): void {
 
+        console.log(`difficulty: ${difficulty}, mining...`)
         while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")) {
             this.nonce++
             this.hash = this.computeHash()
-            if (this.nonce % 100 === 0) {
-                const status = (this.hash.slice(0,difficulty).match(/0/g) || []).length;
-                console.log(`loading ${this.nonce}, status: ${status}/${difficulty}`)
-            }
+            // if (this.nonce % 100 === 0) {
+            //     const status = (this.hash.slice(0,difficulty).match(/0/g) || []).length;
+            //     console.log(`loading ${this.nonce}, status: ${status}/${difficulty}`)
+            // }
         }
 
         console.log(`mine complete with nonce: ${this.nonce} and hash: ${this.hash}`)
